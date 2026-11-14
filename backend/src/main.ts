@@ -1,11 +1,16 @@
+
 import 'reflect-metadata';
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module.js';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
+
+  app.setGlobalPrefix('api');
   app.enableCors({ origin: 'http://localhost:5173' });
+
   await app.listen(3000);
-  console.log('DevFlix API disponível em http://localhost:3000');
+  console.log('DevFlix API disponível em http://localhost:3000/api');
 }
+
 bootstrap();
